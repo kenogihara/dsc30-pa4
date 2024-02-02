@@ -1,14 +1,14 @@
 /*
- * NAME: TODO
- * PID: TODO
+ * NAME: Ken Ogihara
+ * PID: A16969236
  */
 
 import java.util.AbstractList;
 
 /**
- * TODO
- * @author TODO
- * @since TODO
+ * Implementation of DoubleLinkedList class and Node subclass.
+ * @author Ken Ogihara
+ * @since A16969236
  */
 public class DoublyLinkedList<T> extends AbstractList<T> {
 
@@ -31,7 +31,9 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * Constructor to create singleton Node
          */
         private Node(T element) {
-            // TODO: complete constructor
+            this.data = element;
+            this.next = null;
+            this.prev = null;
         }
 
         /**
@@ -42,7 +44,9 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param prevNode predecessor Node, can be null
          */
         private Node(T element, Node nextNode, Node prevNode) {
-            // TODO: complete implementation
+            this.data = element;
+            this.next = nextNode;
+            this.prev = prevNode;
         }
 
         /**
@@ -51,15 +55,14 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param element new element
          */
         public void setElement(T element) {
-            // TODO: complete implementation
+            this.data = element;
         }
 
         /**
          * Accessor to get the Nodes Element
          */
         public T getElement() {
-            // TODO: complete implementation
-            return null;
+            return this.data;
         }
 
         /**
@@ -68,7 +71,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param n new next node
          */
         public void setNext(Node n) {
-            // TODO: complete implementation
+            this.next = n;
         }
 
         /**
@@ -77,8 +80,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @return the successor node
          */
         public Node getNext() {
-            // TODO: complete implementation
-            return null;
+            return this.next;
         }
 
         /**
@@ -87,7 +89,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param p new previous node
          */
         public void setPrev(Node p) {
-            // TODO: complete implementation
+            this.prev = p;
         }
 
 
@@ -97,8 +99,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @return predecessor node
          */
         public Node getPrev() {
-            // TODO: complete implementation
-            return null;
+            return this.prev;
         }
 
         /**
@@ -106,7 +107,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * Update previous and next nodes
          */
         public void remove() {
-            // TODO: complete implementation
+            prev.setNext(this.next);
+            next.setPrev(this.prev);
         }
     }
 
@@ -114,7 +116,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * Creates a new, empty doubly-linked list.
      */
     public DoublyLinkedList() {
-        // TODO: complete default constructor
+        this.head = null;
+        this.tail = null;
     }
 
     /**
@@ -126,14 +129,24 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      */
     @Override
     public boolean add(T element) throws NullPointerException {
-        // TODO: Implementation for throwing exceptions followed by
-        // implementation of adding the new data
+        if (element == null) {
+            throw new NullPointerException("Element is null");
+        }
+        Node newNode = new Node(element);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        }
+        tail.setNext(newNode);
+        newNode.setPrev(tail);
+        tail = newNode;
+        nelems++;
         return true;
     }
 
 
     /**
-     * Adds an element to a certain index in the list, shifting exist elements
+     * Adds an element to a certain index in the list, shifting existing elements
      * create room. Does not accept null values.
      *
      * TODO: Javadoc comments
@@ -141,7 +154,12 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     @Override
     public void add(int index, T element)
             throws IndexOutOfBoundsException, NullPointerException {
-        // TODO: Implementation for throwing exceptions followed by
+        if (element == null) {
+            throw new NullPointerException("Element is null");
+        }
+        if (index < 0 || index > nelems) {
+            throw new IndexOutOfBoundsException();
+        }
         // implementation of adding the new data
     }
 

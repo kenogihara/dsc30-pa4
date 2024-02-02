@@ -2,8 +2,8 @@ import java.util.*;
 
 /**
  * TODO
- * @author TODO
- * @since  TODO
+ * @author Ken Ogihara
+ * @since  A16969236
  */
 
 public class ListManual {
