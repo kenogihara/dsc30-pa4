@@ -1,13 +1,13 @@
 /*
-    Name: TODO
-    PID:  TODO
+    Name: Ken Ogihara
+    PID:  A16969236
  */
 
 /**
- * TODO
+ * Implementation of MyQueue class
  *
- * @author TODO
- * @since TODO
+ * @author Ken Ogihara
+ * @since ${2/7/24}
  */
 
 public class MyQueue<T> implements MyQueueInterface<T> {
