@@ -67,7 +67,7 @@ public class MyQueue<T> implements MyQueueInterface<T> {
      * @return the element at the front of the queue; null if the queue is empty.
      */
     public T dequeue() {
-        if (myList.size() == 0) {
+        if (myList.isEmpty()) {
             return null;
         }
         return myList.remove(0);
