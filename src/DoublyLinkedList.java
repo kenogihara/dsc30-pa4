@@ -31,9 +31,9 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * Constructor to create singleton Node
          */
         private Node(T element) {
-            this.data = element;
-            this.next = null;
-            this.prev = null;
+            data = element;
+            next = null;
+            prev = null;
         }
 
         /**
@@ -44,9 +44,9 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param prevNode predecessor Node, can be null
          */
         private Node(T element, Node nextNode, Node prevNode) {
-            this.data = element;
-            this.next = nextNode;
-            this.prev = prevNode;
+            data = element;
+            next = nextNode;
+            prev = prevNode;
         }
 
         /**
@@ -55,14 +55,14 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param element new element
          */
         public void setElement(T element) {
-            this.data = element;
+            data = element;
         }
 
         /**
          * Accessor to get the Nodes Element
          */
         public T getElement() {
-            return this.data;
+            return data;
         }
 
         /**
@@ -71,7 +71,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param n new next node
          */
         public void setNext(Node n) {
-            this.next = n;
+            next = n;
         }
 
         /**
@@ -80,7 +80,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @return the successor node
          */
         public Node getNext() {
-            return this.next;
+            return next;
         }
 
         /**
@@ -89,7 +89,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @param p new previous node
          */
         public void setPrev(Node p) {
-            this.prev = p;
+            prev = p;
         }
 
 
@@ -99,7 +99,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * @return predecessor node
          */
         public Node getPrev() {
-            return this.prev;
+            return prev;
         }
 
         /**
@@ -107,8 +107,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
          * Update previous and next nodes
          */
         public void remove() {
-            prev.setNext(this.next);
-            next.setPrev(this.prev);
+            prev.setNext(next);
+            next.setPrev(prev);
         }
     }
 
@@ -116,9 +116,9 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * Creates a new, empty doubly-linked list.
      */
     public DoublyLinkedList() {
-        this.head = null;
-        this.tail = null;
-        this.nelems = 0;
+        head = null;
+        tail = null;
+        nelems = 0;
     }
 
     /**
@@ -135,7 +135,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         }
         Node newNode = new Node(element);
         if (nelems == 0) {
-            head = newNode;
+            head.next = newNode;
             return true;
         } else {
             tail.next = newNode;
