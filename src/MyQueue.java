@@ -13,39 +13,76 @@
 public class MyQueue<T> implements MyQueueInterface<T> {
     
     /* instance variables, feel free to add if you need */
-    public DoublyLinkedList<Character> myList;
+    public DoublyLinkedList<T> myList;
     /* ===separation=== */
 
+    /**
+     * Constructor to create a new, double linked list.
+     */
     public MyQueue() {
-
+        myList = new DoublyLinkedList<T>();
     }
 
+    /**
+     * Method that checks whether the queue is empty.
+     *
+     * @return whether or not the queue is empty.
+     */
     public boolean isEmpty() {
-        // TODO
-        return false;
+        return myList.isEmpty();
     }
 
+    /**
+     * Method that checks the number of elements in the queue.
+     *
+     * @return an integer that represents the size of the queue.
+     */
     public int size() {
-        // TODO
-        return 0;
+        return myList.size();
     }
 
+    /**
+     * Method that clears the queue.
+     */
     public void clear() {
-        // TODO
+        myList.clear();
     }
 
+    /**
+     * Method that adds an element to the queue.
+     *
+     * @param data which is an element that will be added to the queue.
+     * @throws IllegalArgumentException if the given data is null.
+     */
     public void enqueue(T data) {
-        // TODO
+        if (data == null) {
+            throw new IllegalArgumentException("data is null");
+        }
+        myList.add(data);
     }
 
+    /**
+     * Method that removes an element at the front of the queue.
+     *
+     * @return the element at the front of the queue; null if the queue is empty.
+     */
     public T dequeue() {
-        // TODO
-        return null;
+        if (myList.size() == 0) {
+            return null;
+        }
+        return myList.remove(0);
     }
 
+    /**
+     * Method that returns the element at the front of queue.
+     *
+     * @return the element at the front of the queue; null if the queue is empty.
+     */
     public T peek() {
-        // TODO
-        return null;
+        if (myList.size() == 0) {
+            return null;
+        }
+        return myList.get(0);
     }
 
 }
