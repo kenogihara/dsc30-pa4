@@ -84,5 +84,4 @@ public class MyQueue<T> implements MyQueueInterface<T> {
         }
         return myList.get(0);
     }
-
 }

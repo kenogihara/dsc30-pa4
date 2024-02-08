@@ -11,6 +11,7 @@
  */
 class ProteinSynthesis {
 
+    public boolean startTranscription;
     /* Magic numbers */
     public static final int GROUP = 3;
     public static final int CODON = 3;
@@ -51,12 +52,12 @@ class ProteinSynthesis {
             return emptyQueue;
         }
         String codon = "";
-        boolean startTranscription;
-        MyQueue<Character> aminoAcidChain = new MyQueue<>;
+        MyQueue<Character> aminoAcidChain = new MyQueue<>();
         int groups = rna.size() / CODON;
         for (int i = 0; i < groups; i++) {
             codon += rna.dequeue() + rna.dequeue() + rna.dequeue();
             if (codon.equals("UAA") || codon.equals("UAG") || codon.equals("UGA")) {
+                aminoAcidChain.enqueue(CodonMap.getAminoAcid(codon));
                 break;
             }
             if (codon.equals("AUG")) {
