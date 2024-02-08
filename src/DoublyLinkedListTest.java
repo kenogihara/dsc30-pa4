@@ -37,7 +37,6 @@ class DoublyLinkedListTest {
 
     @Test
     void testAdd() {
-
         assertThrows(IndexOutOfBoundsException.class, () -> flights.add(1, "JA56"));
         assertThrows(IndexOutOfBoundsException.class, () -> flights.add(-1, "JA56"));
         flights.add("DL1");
@@ -46,9 +45,16 @@ class DoublyLinkedListTest {
         flights.add(1, "HA77");
         flights.add(3, "AS100");
         assertEquals(4, flights.size());
-        assertEquals("JA6", flights.head.next.next.getElement());
-        assertEquals("DL1", flights.tail.prev.getElement());
+        assertEquals("HA77", flights.head.next.next.getElement());
+        assertEquals("AS100", flights.tail.prev.getElement());
 
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(5, 6);
+        assertEquals(6, numbers.size());
     }
 
     @Test
@@ -87,6 +93,8 @@ class DoublyLinkedListTest {
 
     @Test
     void isEmpty() {
+        numbers.add(800);
+        assertFalse(numbers.isEmpty());
 
     }
 

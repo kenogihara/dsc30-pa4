@@ -167,17 +167,17 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
             throw new IndexOutOfBoundsException("Index outside of range");
         }
         Node newNode = new Node(element);
-        Node prev = head;
+        Node node = head.next;
         int count = 1;
         while (count < index) {
-            prev = prev.next;
+            node = node.next;
             count++;
         }
         Node current;
-        current = prev.next;
+        current = node.next;
         newNode.next = current;
-        newNode.prev = prev;
-        prev.next = newNode;
+        newNode.prev = node;
+        node.next = newNode;
         current.prev = newNode;
         nelems++;
     }
@@ -241,7 +241,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     }
 
     /**
-     * Method that prints all elements in a list.
+     * Method that prints all elements in a list in the order of their index.
      *
      */
     public void show() {
@@ -267,29 +267,58 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     /**
      * Remove the element from position index in the list
      *
-     * TODO: javadoc comments
+     * @param index in which the element is removed.
+     * @return element that's removed from the list.
+     * @throws IndexOutOfBoundsException if the index is outside the specified range.
      */
     @Override
     public T remove(int index) throws IndexOutOfBoundsException {
-        return null;
+        if (index < 0 || index > nelems - 1) {
+            throw new IndexOutOfBoundsException("Index out of range");
+        }
+        Node current = head;
+        for (int i = 0; i < index + 1; i++) {
+            current = current.next;
+        }
+        current.next.prev = current.prev;
+        current.prev.next = current.next;
+        nelems--;
+        return current.data;
+
     }
 
     /**
      * Set the value of an element at a certain index in the list.
      *
-     * TODO: javadoc comments
+     * @param index in which the element will be altered.
+     * @param element the new data that will replace the old data.
+     * @return the data that was previously stored at the specified location.
+     * @throws IndexOutOfBoundsException if the index is outside the specified range.
+     * @throws NullPointerException if the element received is null.
      */
     @Override
     public T set(int index, T element)
             throws IndexOutOfBoundsException, NullPointerException {
-        // TODO: Fill in implmentation
-        return null;
+        if (index < 0 || index > nelems - 1) {
+            throw new IndexOutOfBoundsException("Index out of range");
+        }
+        if (element == null) {
+            throw new NullPointerException("Element is null");
+        }
+        Node current = head;
+        for (int i = 0; i < index + 1; i++) {
+            current = current.next;
+        }
+        T temp = current.data;
+        current.data = element;
+        return temp;
+
     }
 
     /**
      * Retrieves the amount of elements that are currently on the list.
      *
-     * TODO: javadoc comments
+     * @return the number of elements in a list.
      */
     @Override
     public int size() {
