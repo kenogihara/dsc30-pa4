@@ -4,20 +4,19 @@ class DoublyLinkedListTest {
 
     DoublyLinkedList<String> train;
     DoublyLinkedList<String> flights;
-    DoublyLinkedList<Integer> arbitrary;
+    DoublyLinkedList<Integer> numbers;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         train = new DoublyLinkedList<String>();
         flights = new DoublyLinkedList<String>();
-        arbitrary = new DoublyLinkedList<Integer>();
+        numbers = new DoublyLinkedList<Integer>();
     }
-
-
 
     @org.junit.jupiter.api.Test
     void constructor() {
-
+        DoublyLinkedList<Integer> linkedList = new DoublyLinkedList<>();
+        assertThrows(NullPointerException.class, () -> linkedList.add(null));
 
 
 
