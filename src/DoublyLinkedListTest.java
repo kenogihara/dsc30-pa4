@@ -95,25 +95,72 @@ class DoublyLinkedListTest {
     void isEmpty() {
         numbers.add(800);
         assertFalse(numbers.isEmpty());
-
+        assertTrue(flights.isEmpty());
+        numbers.remove(0);
+        assertTrue(numbers.isEmpty());
     }
 
     @Test
     void remove() {
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        assertEquals(3, numbers.remove(2));
+        assertEquals(4, numbers.head.next.next.next.getElement());
+        assertEquals(5, numbers.remove(3));
+        assertEquals(3, numbers.size());
+        assertThrows(IndexOutOfBoundsException.class, () -> numbers.remove(3));
     }
 
     @Test
     void set() {
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+        assertEquals(2, numbers.set(2, 99999));
+        assertEquals(99999, numbers.get(2));
+        assertEquals(numbers.tail.prev.prev.prev.prev.prev.prev.prev.getElement(), numbers.head.next.next.next.next.getElement());
+        assertThrows(IndexOutOfBoundsException.class, () -> flights.set(1, "HA70"));
+        assertThrows(NullPointerException.class, () -> numbers.set(7, null));
+
     }
 
     @Test
     void size() {
+        assertEquals(0, flights.size());
+        flights.add("AS31");
+        flights.remove(0);
+        assertEquals(0, flights.size());
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+        assertEquals(10, numbers.size());
+        numbers.remove(3);
+        assertEquals(9, numbers.size());
     }
 
     @Test
     void testToString() {
         train.add("CAR 1");
-        System.out.println(train.toString());
+        assertEquals("[(head) -> CAR 1 -> (tail)]", train.toString());
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        assertEquals("[(head) -> 1 -> 2 -> 3 -> 4 -> 5 -> (tail)]", numbers.toString());
+
+        assertEquals("[(head) -> (tail)]", flights.toString());
+
+        train.add("CAR 2");
+        train.add("CAR 3");
+        train.add("CAR 4");
+        train.add("CAR 5");
+        train.add("CAR 6");
+        train.add("CAR 7");
+        assertEquals("[(head) -> CAR 1 -> CAR 2 -> CAR 3 -> CAR 4 -> CAR 5 -> CAR 6 -> CAR 7 -> (tail)]", train.toString());
     }
 }
-

@@ -336,8 +336,14 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         String output = "";
         Node current = head.next;
 
-        while (current.next != null) {
-            output += String.format(" -> %s ->", current.data);
+        if (this.isEmpty()) {
+            return headStringFormat + " ->" + tailStringFormat;
+        }
+        while (current != null) {
+            output += String.format(" -> %s", current.data);
+            if (current.next == tail) {
+                return headStringFormat + output + " ->" + tailStringFormat;
+            }
             current = current.next;
         }
         return headStringFormat + output + tailStringFormat;
