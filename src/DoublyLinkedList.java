@@ -3,6 +3,7 @@
  * PID: A16969236
  */
 
+import java.sql.SQLOutput;
 import java.util.AbstractList;
 
 /**
@@ -14,8 +15,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
 
     /* DLL instance variables */
     private int nelems;
-    private Node head;
-    private Node tail;
+    public Node head;
+    public Node tail;
 
     /**
      * Node for chaining together to create a linked list
@@ -116,9 +117,10 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * Creates a new, empty doubly-linked list.
      */
     public DoublyLinkedList() {
-        head = null;
-        tail = null;
-        nelems = 0;
+        head = new Node(null);
+        tail = new Node(null);
+        head.next = tail;
+        tail.prev = head;
     }
 
     /**
@@ -133,17 +135,16 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         if (element == null) {
             throw new NullPointerException("Element is null");
         }
-        Node newNode = new Node(element);
         if (nelems == 0) {
-            head.next = newNode;
+            head.next = new Node(element, tail, head);
+            tail.prev = head.next;
+            nelems++;
             return true;
         } else {
-            tail.next = newNode;
-            newNode.prev = tail;
+            tail.prev.next = tail.prev = new Node(element, tail, tail.prev);
+            nelems++;
+            return true;
         }
-        tail = newNode;
-        nelems++;
-        return true;
     }
 
 
@@ -163,12 +164,6 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
             throw new IndexOutOfBoundsException("Index outside of range");
         }
         Node newNode = new Node(element);
-        if (index == 0) {
-            newNode.next = head;
-            head.prev = newNode;
-            head = newNode;
-            nelems++;
-        }
         Node prev = head;
         int count = 1;
         while (count < index) {
@@ -232,6 +227,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         for (int i = 0; i < nelems; i++) {
 
         }
+        return null;
     }
 
     /**
@@ -242,6 +238,43 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     private Node getNth(int index) {
         // TODO: implement
         return null;
+    }
+
+
+    /**
+     * Helper method to get the Nth node in our list
+     * <p>
+     * TODO: Javadoc comments
+     */
+    public Node getHead() {
+        return this.head;
+    }
+
+
+    /**
+     * Helper method to get the Nth node in our list
+     *
+     * TODO: Javadoc comments
+     */
+    public void show() {
+        Node node = head;
+        while (node.next != null) {
+
+            System.out.print(node.data + ", ");
+            node = node.next;
+        }
+        System.out.print(node.data);
+    }
+
+
+
+    /**
+     * Helper method to get the Nth node in our list
+     *
+     * TODO: Javadoc comments
+     */
+    public Node getTail() {
+        return tail;
     }
 
     /**
@@ -261,7 +294,7 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      */
     @Override
     public T remove(int index) throws IndexOutOfBoundsException {
-
+        return null;
     }
 
     /**
