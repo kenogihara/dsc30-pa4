@@ -13,11 +13,11 @@
 public class MyQueue<T> implements MyQueueInterface<T> {
     
     /* instance variables, feel free to add if you need */
-
+    public DoublyLinkedList<Character> myList;
     /* ===separation=== */
 
     public MyQueue() {
-        // TODO
+
     }
 
     public boolean isEmpty() {
