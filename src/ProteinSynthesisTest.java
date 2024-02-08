@@ -6,14 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProteinSynthesisTest {
 
     ProteinSynthesis genetics;
+    MyQueue<Character> forTesting;
     @BeforeEach
     void setUp() {
         genetics = new ProteinSynthesis();
     }
     @Test
     void transcribeDNA() {
-        assertEquals("AAGAGAUGUCGGUUUGCUAGUUCACGUAAAGGU",
-                (genetics.transcribeDNA("AAGAGATGTCGGTTTGCTAGTTCACGTAAAGGT").myList.forTestString()));
+        forTesting = genetics.transcribeDNA("AAGAGATGTCGGTTTGCTAGTTCACGTAAAGGT");
+        assertEquals("AAGAGAUGUCGGUUUGCUAGUUCACGUAAAGGU", forTesting.myList.toTestString());
 
         assertEquals("GCCUCGCGCCACCUCUAAGUAAGUGAGCCGUCGAGACAUUAUCCCUGAUUUUCUCACUACUAUUAGUACUCACGGCGCAAUACCACCACAGCCUUGUCU",
                 String.valueOf(genetics.transcribeDNA("GCCTCGCGCCACCTCTAAGTAAGTGAGCCGTCGAGACATTATCCCTGATTTTCTCACTACTATTAGTACTCACGGCGCAATACCACCACAGCCTTGTCT").myList));

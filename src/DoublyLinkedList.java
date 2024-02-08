@@ -348,4 +348,18 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         }
         return headStringFormat + output + tailStringFormat;
     }
+
+    public String toTestString() {
+        String output = "";
+        Node current = head.next;
+        while (current != null) {
+            output += String.valueOf(current.data);
+            if (current.next == tail) {
+                return output;
+            }
+            current = current.next;
+        }
+        return output;
+    }
+
 }
