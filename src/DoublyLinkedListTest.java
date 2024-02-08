@@ -56,18 +56,27 @@ class DoublyLinkedListTest {
         numbers.add(1);
         numbers.add(1);
         numbers.add(1);
-        numbers.add(1);
-        numbers.add(1);
         numbers.clear();
-        numbers.show();
+        assertEquals(0, numbers.size());
+        assertSame(numbers.head.next.getElement(), numbers.tail.getElement());
+        train.add("1");
+        train.clear();
+        assertEquals(0, train.size());
     }
 
     @Test
     void contains() {
+        numbers.add(10);
+        numbers.add(3);
+        numbers.add(18);
+        assertTrue(numbers.contains(18));
+        assertFalse(numbers.contains(1));
+        assertTrue(numbers.contains(3));
     }
 
     @Test
     void get() {
+
     }
 
     @Test

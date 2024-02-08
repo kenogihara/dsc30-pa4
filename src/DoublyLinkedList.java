@@ -152,7 +152,10 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * Adds an element to a certain index in the list, shifting existing elements
      * create room. Does not accept null values.
      *
-     * TODO: Javadoc comments
+     * @param index in which the element is inserted.
+     * @param element that will be inserted.
+     * @throws IndexOutOfBoundsException if the index is outside the specified range.
+     * @throws NullPointerException if the element is null.
      */
     @Override
     public void add(int index, T element)
@@ -184,28 +187,23 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      */
     @Override
     public void clear() {
-        Node temp = new Node(null);
-        Node delete = null;
-        while (head != null) {
-            delete = head.next;
-            head = null;
-            head = delete;
-        }
-        tail = null;
+        head.next = tail;
+        tail.prev = head;
         nelems = 0;
     }
 
     /**
      * Determine if the list contains the data element anywhere in the list.
      *
-     * TODO: Javadoc comments
+     * @param element that may or may not be in the list.
+     * @return whether or not the list contains the element.
      */
     @Override
     public boolean contains(Object element) {
         T data = (T) element;
-        Node current = head;
+        Node current = head.next;
         while (current != null) {
-            if (current == element) {
+            if (current.data == element) {
                 return true;
             }
             current = current.next;
