@@ -112,15 +112,8 @@ class DoublyLinkedListTest {
 
     @Test
     void testToString() {
+        train.add("CAR 1");
+        System.out.println(train.toString());
     }
-
-    @Test
-    void removeMultipleOf() {
-    }
-
-    @Test
-    void swapSegment() {
-    }
-
 }
 

@@ -152,10 +152,10 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * Adds an element to a certain index in the list, shifting existing elements
      * create room. Does not accept null values.
      *
-     * @param index in which the element is inserted.
+     * @param index   in which the element is inserted.
      * @param element that will be inserted.
      * @throws IndexOutOfBoundsException if the index is outside the specified range.
-     * @throws NullPointerException if the element is null.
+     * @throws NullPointerException      if the element is null.
      */
     @Override
     public void add(int index, T element)
@@ -215,8 +215,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * Retrieves the element stored with a given index on the list.
      *
      * @param index in which the element is stored in.
-     * @throws IndexOutOfBoundsException if the index is outside the specified range.
      * @return the element that the node at the specified index is currently storing.
+     * @throws IndexOutOfBoundsException if the index is outside the specified range.
      */
     @Override
     public T get(int index) throws IndexOutOfBoundsException {
@@ -229,8 +229,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     /**
      * Helper method to get the Nth node in our list
      *
-     * @index in which the element is stored in.
      * @return the node at the specified index.
+     * @index in which the element is stored in.
      */
     private Node getNth(int index) {
         Node current = head;
@@ -242,7 +242,6 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
 
     /**
      * Method that prints all elements in a list in the order of their index.
-     *
      */
     public void show() {
         Node node = head;
@@ -284,17 +283,16 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         current.prev.next = current.next;
         nelems--;
         return current.data;
-
     }
 
     /**
      * Set the value of an element at a certain index in the list.
      *
-     * @param index in which the element will be altered.
+     * @param index   in which the element will be altered.
      * @param element the new data that will replace the old data.
      * @return the data that was previously stored at the specified location.
      * @throws IndexOutOfBoundsException if the index is outside the specified range.
-     * @throws NullPointerException if the element received is null.
+     * @throws NullPointerException      if the element received is null.
      */
     @Override
     public T set(int index, T element)
@@ -328,32 +326,20 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     /**
      * String representation of this list in the form of:
      * "[(head) -> elem1 -> elem2 -> ... -> elemN -> (tail)]"
-     *
-     * TODO: javadoc comments
+     * <p>
+     * @return a string that represents a linked list.
      */
     @Override
     public String toString() {
-        return null;
+        String headStringFormat = "[(head)";
+        String tailStringFormat = " (tail)]";
+        String output = "";
+        Node current = head.next;
+
+        while (current.next != null) {
+            output += String.format(" -> %s ->", current.data);
+            current = current.next;
+        }
+        return headStringFormat + output + tailStringFormat;
     }
-
-    /* ==================== EXTRA CREDIT ==================== */
-
-    /**
-     * Remove nodes whose index is a multiple of base
-     *
-     * TODO: javadoc comments
-     */
-    public void removeMultipleOf(int base) {
-        // TODO: complete implementation       
-    }
-
-    /**
-     * Swap the nodes between index [0, splitIndex] of two lists
-     *
-     * TODO: javadoc comments
-     */
-    public void swapSegment(DoublyLinkedList<T> other, int splitIndex) {
-        // TODO: complete implementation
-    }
-
 }
