@@ -76,11 +76,18 @@ class DoublyLinkedListTest {
 
     @Test
     void get() {
-
+        flights.add("Q12");
+        flights.add("JA80");
+        flights.add("HA1");
+        assertEquals("HA1", flights.get(2));
+        assertEquals("Q12", flights.get(0));
+        assertThrows(IndexOutOfBoundsException.class, () -> flights.get(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> flights.get(3));
     }
 
     @Test
     void isEmpty() {
+
     }
 
     @Test

@@ -216,48 +216,37 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      *
      * @param index in which the element is stored in.
      * @throws IndexOutOfBoundsException if the index is outside the specified range.
+     * @return the element that the node at the specified index is currently storing.
      */
     @Override
     public T get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index > nelems - 1) {
             throw new IndexOutOfBoundsException("Index out of range");
         }
-        for (int i = 0; i < nelems; i++) {
-
-        }
-        return null;
+        return this.getNth(index).getElement();
     }
 
     /**
      * Helper method to get the Nth node in our list
      *
-     * TODO: Javadoc comments
+     * @index in which the element is stored in.
+     * @return the node at the specified index.
      */
     private Node getNth(int index) {
-        // TODO: implement
-        return null;
+        Node current = head;
+        for (int i = 0; i < index + 1; i++) {
+            current = current.next;
+        }
+        return current;
     }
 
-
     /**
-     * Helper method to get the Nth node in our list
-     * <p>
-     * TODO: Javadoc comments
-     */
-    public Node getHead() {
-        return this.head;
-    }
-
-
-    /**
-     * Helper method to get the Nth node in our list
+     * Method that prints all elements in a list.
      *
-     * TODO: Javadoc comments
      */
     public void show() {
         Node node = head;
         while (node.next != null) {
-
             System.out.print(node.data + ", ");
             node = node.next;
         }
@@ -265,20 +254,10 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     }
 
 
-
-    /**
-     * Helper method to get the Nth node in our list
-     *
-     * TODO: Javadoc comments
-     */
-    public Node getTail() {
-        return tail;
-    }
-
     /**
      * Determine if the list empty
      *
-     * TODO: javadoc comments
+     * @return whether or not the list is empty.
      */
     @Override
     public boolean isEmpty() {
