@@ -96,7 +96,7 @@ class DoublyLinkedListTest {
         numbers.add(800);
         assertFalse(numbers.isEmpty());
         assertTrue(flights.isEmpty());
-        numbers.remove(0);
+        numbers.removeFirst();
         assertTrue(numbers.isEmpty());
     }
 

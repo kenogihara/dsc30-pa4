@@ -141,13 +141,11 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         if (nelems == 0) {
             head.next = new Node(element, tail, head);
             tail.prev = head.next;
-            nelems++;
-            return true;
         } else {
             tail.prev.next = tail.prev = new Node(element, tail, tail.prev);
-            nelems++;
-            return true;
         }
+        nelems++;
+        return true;
     }
 
 
@@ -203,7 +201,6 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      */
     @Override
     public boolean contains(Object element) {
-        T data = (T) element;
         Node current = head.next;
         while (current != null) {
             if (current.data == element) {
