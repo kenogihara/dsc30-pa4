@@ -78,13 +78,4 @@ public class MyQueue<T> implements MyQueueInterface<T> {
     public T peek() {
         return myList.get(0);
     }
-
-    public String toString() {
-        if (myList.isEmpty()) {
-            return "";
-        }
-        String output = "";
-        for (T elem: myList) output += elem + "";
-        return output;
-    }
 }

@@ -11,7 +11,6 @@
  */
 class ProteinSynthesis {
 
-    public boolean startTranscription;
     /* Magic numbers */
     public static final int GROUP = 3;
 
@@ -47,6 +46,7 @@ class ProteinSynthesis {
      **/
     public MyQueue<Character> translateRNA(MyQueue<Character> rna) {
         MyQueue<Character> emptyQueue = new MyQueue<>();
+        boolean startTranscription = false;
         if (rna.isEmpty()) {
             return emptyQueue;
         }
@@ -55,7 +55,6 @@ class ProteinSynthesis {
         int group = rna.size() / GROUP;
         while (!rna.isEmpty()) {
             codon = rna.dequeue() + "" + rna.dequeue() + "" + rna.dequeue();
-            System.out.println(codon);
             if (codon.equals("AUG")) {
                 startTranscription = true;
             }
