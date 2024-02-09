@@ -53,7 +53,7 @@ class ProteinSynthesis {
         String codon;
         MyQueue<Character> aminoAcidChain = new MyQueue<>();
         while (!rna.isEmpty()) {
-            codon = "%s%s%s".formatted(rna.dequeue(), rna.dequeue(), rna.dequeue());
+            codon = String.format("%s%s%s", rna.dequeue(), rna.dequeue(), rna.dequeue());
             if (codon.equals("AUG")) {
                 startTranscription = true;
             }
