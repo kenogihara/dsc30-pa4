@@ -24,10 +24,13 @@ class ProteinSynthesisTest {
 
     @Test
     void translateRNA() {
-        //assertEquals("MYS", genetics.translateRNA(genetics.transcribeDNA("ATGTATTCT")).myList.toTestString());
+        assertEquals("MYS", genetics.translateRNA(genetics.transcribeDNA("ATGTATTCT")).myList.toTestString());
         assertEquals("MS", genetics.translateRNA(genetics.transcribeDNA("AGGATGTCT")).myList.toTestString());
         assertEquals("M**", genetics.translateRNA(genetics.transcribeDNA("ACAGAGATGTAATAC")).myList.toTestString());
         assertEquals("MELPY", genetics.translateRNA(genetics.transcribeDNA("ATGGAGTTGCCGTAC")).myList.toTestString());
         assertTrue(genetics.translateRNA(genetics.transcribeDNA("GAATGCCGGTCAGCA")).isEmpty());
+
+
+
     }
 }

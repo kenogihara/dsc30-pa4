@@ -14,7 +14,6 @@ class ProteinSynthesis {
     public boolean startTranscription;
     /* Magic numbers */
     public static final int GROUP = 3;
-    public static final int CODON = 3;
 
     /**
      * Method that transcribes DNA to RNA by replacing Thymine nucleotides with Uracil.
@@ -53,21 +52,19 @@ class ProteinSynthesis {
         }
         String codon = "";
         MyQueue<Character> aminoAcidChain = new MyQueue<>();
-        int groups = rna.size() / CODON;
-        for (int i = 0; i < groups; i++) {
-            codon += rna.dequeue() + rna.dequeue() + rna.dequeue();
-            if (codon.equals("UAA") || codon.equals("UAG") || codon.equals("UGA")) {
-                if (startTranscription) {
-                    aminoAcidChain.enqueue(CodonMap.getAminoAcid(codon));
-                    break;
-                }
-            }
+        while (!rna.isEmpty()) {
+            codon = rna.dequeue() + "" + rna.dequeue() + "" + rna.dequeue();
             if (codon.equals("AUG")) {
                 startTranscription = true;
             }
             if (startTranscription) {
-                aminoAcidChain.enqueue(CodonMap.getAminoAcid(codon));
+                if (codon.equals("UAA") || codon.equals("UAG") || codon.equals("UGA")) {
+                    break;
+                } else {
+                    aminoAcidChain.enqueue(CodonMap.getAminoAcid(codon));
+                }
             }
-        } return aminoAcidChain;
+        }
+        return aminoAcidChain;
     }
 }

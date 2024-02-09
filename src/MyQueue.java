@@ -67,9 +67,6 @@ public class MyQueue<T> implements MyQueueInterface<T> {
      * @return the element at the front of the queue; null if the queue is empty.
      */
     public T dequeue() {
-        if (myList.isEmpty()) {
-            return null;
-        }
         return myList.remove(0);
     }
 
@@ -79,9 +76,6 @@ public class MyQueue<T> implements MyQueueInterface<T> {
      * @return the element at the front of the queue; null if the queue is empty.
      */
     public T peek() {
-        if (myList.size() == 0) {
-            return null;
-        }
         return myList.get(0);
     }
 }
