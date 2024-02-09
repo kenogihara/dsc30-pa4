@@ -50,11 +50,10 @@ class ProteinSynthesis {
         if (rna.isEmpty()) {
             return emptyQueue;
         }
-        String codon = "";
+        String codon;
         MyQueue<Character> aminoAcidChain = new MyQueue<>();
-        int group = rna.size() / GROUP;
         while (!rna.isEmpty()) {
-            codon = rna.dequeue() + "" + rna.dequeue() + "" + rna.dequeue();
+            codon = "%s%s%s".formatted(rna.dequeue(), rna.dequeue(), rna.dequeue());
             if (codon.equals("AUG")) {
                 startTranscription = true;
             }
