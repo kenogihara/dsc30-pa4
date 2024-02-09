@@ -30,6 +30,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
 
         /**
          * Constructor to create singleton Node
+         *
+         * @param element which is the data that we store in the node.
          */
         private Node(T element) {
             data = element;
@@ -61,6 +63,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
 
         /**
          * Accessor to get the Nodes Element
+         *
+         * @return the data that is stored in the node.
          */
         public T getElement() {
             return data;
@@ -229,8 +233,8 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
     /**
      * Helper method to get the Nth node in our list
      *
+     * @param index which is the location of the nth node.
      * @return the node at the specified index.
-     * @index in which the element is stored in.
      */
     private Node getNth(int index) {
         Node current = head;
