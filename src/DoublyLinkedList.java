@@ -349,6 +349,11 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         return headStringFormat + output + tailStringFormat;
     }
 
+    /**
+     * String representation of a linked list for JUNIT testing.
+     *
+     * @return a string that represents a linked list.
+     */
     public String toTestString() {
         String output = "";
         Node current = head.next;
