@@ -371,4 +371,24 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         }
         return output;
     }
+
+    /* ==================== EXTRA CREDIT ==================== */
+
+    /**
+     * Remove nodes whose index is a multiple of base
+     *
+     * TODO: javadoc comments
+     */
+    public void removeMultipleOf(int base) {
+        // TODO: complete implementation
+    }
+
+    /**
+     * Swap the nodes between index [0, splitIndex] of two lists
+     *
+     * TODO: javadoc comments
+     */
+    public void swapSegment(DoublyLinkedList<T> other, int splitIndex) {
+        // TODO: complete implementation
+    }
 }
