@@ -355,6 +355,9 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
      * @return a string that represents a linked list.
      */
     public String toTestString() {
+        if (this.isEmpty()) {
+            return "";
+        }
         String output = "";
         Node current = head.next;
         while (current != null) {

@@ -52,13 +52,16 @@ class ProteinSynthesis {
         }
         String codon = "";
         MyQueue<Character> aminoAcidChain = new MyQueue<>();
+        int group = rna.size() / GROUP;
         while (!rna.isEmpty()) {
             codon = rna.dequeue() + "" + rna.dequeue() + "" + rna.dequeue();
+            System.out.println(codon);
             if (codon.equals("AUG")) {
                 startTranscription = true;
             }
             if (startTranscription) {
                 if (codon.equals("UAA") || codon.equals("UAG") || codon.equals("UGA")) {
+                    aminoAcidChain.enqueue(CodonMap.getAminoAcid(codon));
                     break;
                 } else {
                     aminoAcidChain.enqueue(CodonMap.getAminoAcid(codon));
