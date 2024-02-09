@@ -252,7 +252,6 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         System.out.print(node.data);
     }
 
-
     /**
      * Determine if the list empty
      *
@@ -310,7 +309,6 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         T temp = current.data;
         current.data = element;
         return temp;
-
     }
 
     /**
@@ -369,5 +367,4 @@ public class DoublyLinkedList<T> extends AbstractList<T> {
         }
         return output;
     }
-
 }
